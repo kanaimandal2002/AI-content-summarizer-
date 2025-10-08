@@ -4,65 +4,97 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Content Summarizer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header>
             <h1>AI Content Summarizer</h1>
-            <p>Paste your article or URL and get a concise summary instantly</p>
-        </div>
+            <p>Paste your text or URL and get a concise summary in seconds</p>
+        </header>
         
-        <div class="main-content">
-            <div class="input-section">
-                <div class="tab-buttons">
-                    <button class="tab-button active" onclick="switchTab('text')">Paste Text</button>
-                    <button class="tab-button" onclick="switchTab('url')">Enter URL</button>
-                </div>
-                
-                <div id="text-tab" class="tab-content active">
-                    <textarea 
-                        id="article-text" 
-                        placeholder="Paste your long article here... (Minimum 200 characters)"
-                        oninput="updateCharCount()"
-                    ></textarea>
-                    <div class="stats">
-                        <span id="char-count">0 characters</span>
-                        <span id="word-count">0 words</span>
-                    </div>
-                </div>
-                
-                <div id="url-tab" class="tab-content">
-                    <input 
-                        type="url" 
-                        id="article-url" 
-                        placeholder="Enter article URL (e.g., https://example.com/article)"
-                    >
-                </div>
-                
-                <button id="summarize-btn" class="button" onclick="summarizeContent()">
-                    Summarize Content
-                </button>
+        <div class="app-container">
+            <div class="tabs">
+                <div class="tab active" data-tab="text">Text Input</div>
+                <div class="tab" data-tab="url">URL Input</div>
             </div>
             
-            <div class="summary-section">
-                <h3>Summary</h3>
-                <div id="summary-box" class="summary-box">
-                    <p id="summary-placeholder">Your summary will appear here...</p>
-                    <div id="loading" class="loading" style="display: none;">
-                        <div class="spinner"></div>
-                        <p>Analyzing content and generating summary...</p>
-                    </div>
-                    <div id="summary-content"></div>
+            <div class="tab-content active" id="text-tab">
+                <div class="input-group">
+                    <label for="text-input">Paste your text here</label>
+                    <textarea id="text-input" placeholder="Paste your article, blog post, or any long text content here..."></textarea>
                 </div>
-                <div class="stats" id="summary-stats" style="display: none;">
-                    <span id="summary-length"></span>
-                    <span id="reduction-percentage"></span>
+                
+                <div class="button-group">
+                    <button class="primary-btn" id="summarize-text">
+                        <i class="fas fa-robot"></i> Summarize Text
+                    </button>
+                    <button class="secondary-btn" id="clear-text">
+                        <i class="fas fa-broom"></i> Clear Text
+                    </button>
+                </div>
+            </div>
+            
+            <div class="tab-content" id="url-tab">
+                <div class="input-group">
+                    <label for="url-input">Enter article URL</label>
+                    <input type="text" id="url-input" placeholder="https://example.com/article">
+                </div>
+                
+                <div class="button-group">
+                    <button class="primary-btn" id="summarize-url">
+                        <i class="fas fa-robot"></i> Summarize from URL
+                    </button>
+                    <button class="secondary-btn" id="clear-url">
+                        <i class="fas fa-broom"></i> Clear URL
+                    </button>
+                </div>
+            </div>
+            
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>AI is analyzing and summarizing your content...</p>
+            </div>
+            
+            <div class="error-message" id="error-message">
+                <i class="fas fa-exclamation-triangle"></i> <span id="error-text"></span>
+            </div>
+            
+            <div class="result-container" id="result-container">
+                <div class="result-header">
+                    <div class="result-title">Summary</div>
+                </div>
+                
+                <div class="summary-stats">
+                    <div class="stat">
+                        <div class="stat-value" id="original-length">0</div>
+                        <div class="stat-label">Original Words</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="summary-length">0</div>
+                        <div class="stat-label">Summary Words</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value" id="reduction">0%</div>
+                        <div class="stat-label">Reduction</div>
+                    </div>
+                </div>
+                
+                <div class="summary-content" id="summary-content">
+                    Your summary will appear here...
                 </div>
             </div>
         </div>
+        
+        <footer>
+            <p>AI Content Summarizer &copy; 2023 | Powered by Advanced AI Algorithms</p>
+        </footer>
     </div>
 
     <script>
+        
     </script>
 </body>
 </html>
